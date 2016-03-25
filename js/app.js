@@ -7,6 +7,7 @@ var width  = 5;
 var height = 10;
 var total  = width * height
 
+
 function buildGrid(){
   $("body").append("<ul class='grid'></ul>");
   for (var i = 0; i < total; i++) {
@@ -34,15 +35,15 @@ function drop(){
     var nextLi = $lis[nextIndex];
     
     // Colour that li
-    if (prevLi) $(prevLi).removeClass("red");
-    $(nextLi).addClass("red")
+    if (prevLi) $(prevLi).removeClass("color");
+    $(nextLi).addClass("color")
 
     // Assign the previous and next indexes
     prevIndex = nextIndex;
     nextIndex = nextIndex + width;
 
     // If it hits the bottom, then stop
-    if (nextIndex > total-1) {
+    if (nextIndex > total-1)  {
       drop();
       return clearInterval(dropInterval)
     };
