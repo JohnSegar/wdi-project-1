@@ -6,6 +6,8 @@ $(function(){
 var width  = 5;
 var height = 10;
 var total  = width * height
+var block = document.getElementsByClassName("color");
+
 
 
 function buildGrid(){
@@ -43,10 +45,15 @@ function drop(){
     nextIndex = nextIndex + width;
 
     // If it hits the bottom, then stop
-    if (nextIndex > total-1)  {
+    if (nextIndex > total-1) {
+    
       drop();
       return clearInterval(dropInterval)
     };
   }, 200)
- 
+
+  // function leftArrowPressed() {
+  //   var move = document.getElementsByClassName("color");
+  //    move.left = parseInt(element.style.left) 
+  // }
 }
