@@ -1,3 +1,32 @@
-h1 {
-  color: blue;
+.grid {
+  width: 300px;
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
 }
+
+.grid li {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
+  list-style-type: none;
+}
+
+.red {
+  background: red; 
+}
+
+/*//john's tetris. match 5/10 blocks of same colour so that they dissapear.
+
+//create grid first using divs of lis (10 by 15 maybe). 
+//using an array, get a box in top row to change colour, and then to change to array on next row down (certain amount of time required before it changes). 
+//work out movement as well. 
+//when the block reaches the bottom of grid, generate another block in random position and random colour
+// when a certain amount of the same coloured blocks are touching, then make them dissappear, and the above blocks to then fall down to below array.
+
+//choose variable of first line to */
+
+//
