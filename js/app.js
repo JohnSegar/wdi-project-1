@@ -46,14 +46,26 @@ function drop(){
 
     // If it hits the bottom, then stop
     if (nextIndex > total-1) {
-    
       drop();
       return clearInterval(dropInterval)
     };
   }, 200)
 
-  // function leftArrowPressed() {
-  //   var move = document.getElementsByClassName("color");
-  //    move.left = parseInt(element.style.left) 
-  // }
+  document.addEventListener('keydown', function(move) {
+      //left
+      if(move.keyCode == 37) {
+        console.log("hello")
+          width -= 1;
+      }
+      //right
+      else if(move.keyCode == 39) {
+        console.log("hello")
+          width += 1;
+      }
+      //bottom
+      else if(move.keyCode == 40) {
+        console.log("hello")
+          height += 1;
+      }
+  });
 }
