@@ -6,9 +6,11 @@ $(function(){
 var width  = 5;
 var height = 10;
 var total  = width * height
-var block = document.getElementsByClassName("color");
-
-
+var block  = document.getElementsByClassName("color");
+var moves  = []
+var colors = ['red', 'green', 'blue', 'yellow'];
+var random_color = colors[Math.floor(Math.random() * colors.length)];
+document.getElementsByClassName('random_color').style.color = random_color;
 
 function buildGrid(){
   $("body").append("<ul class='grid'></ul>");
@@ -20,6 +22,11 @@ function buildGrid(){
 function init(){
   var $lis = $("li"); // HTMLCollection, like an Array
   drop();
+}
+
+function checkForFullRow(){
+  // Check if you have a full row in moves
+  console.log(moves);
 }
 
 function drop(){
@@ -36,38 +43,43 @@ function drop(){
     var prevLi = $lis[prevIndex]
     var nextLi = $lis[nextIndex];
     
+    // If next li is red, then stop and drop another
+    if ($(nextLi).hasClass("random_color")) {
+      // Add moves to an array of moves
+      moves.push(prevIndex);
+      checkForFullRow()
+      drop();
+      return clearInterval(dropInterval)
+    }
+
     // Colour that li
-    if (prevLi) $(prevLi).removeClass("color");
-    $(nextLi).addClass("color")
+    if (prevLi) $(prevLi).removeClass("random_color");
+    $(nextLi).addClass("random_color")
 
     // Assign the previous and next indexes
     prevIndex = nextIndex;
     nextIndex = nextIndex + width;
 
     // If it hits the bottom, then stop
-    var block = document.getElementsByClassName("color");
+    // var block = document.getElementsByClassName("color");
+
     if (nextIndex > total-1) {
+      // Add moves to an array of moves
+      moves.push(prevIndex);
+      checkForFullRow()
       drop();
       return clearInterval(dropInterval)
     };
-  }, 200)
+  }, 100)
 
-  document.addEventListener('keyup', function(move) {
+  document.addEventListener('keydown', function(move) {
     move.preventDefault();
+    if(move.keyCode == 37) {
       //left
-      if(move.keyCode == 37) {
-        console.log("hello")
-          nextIndex -=1;
-      }
+      nextIndex -=1;
+    } else if(move.keyCode == 39) {
       //right
-      else if(move.keyCode == 39) {
-        console.log("hello")
-          nextIndex +=1;
-      }
-     
-      // $(document).bind('keyup', function(){
-      //   $(move).stop();
-      //   console.log("smelly")
-      // })
+      nextIndex +=1;
+    }
   });
 }
