@@ -3,14 +3,14 @@ $(function(){
   init();
 })
 
-var width  = 5;
-var height = 10;
+var width  = 10;
+var height = 20;
 var total  = width * height
 var block  = document.getElementsByClassName("color");
 var moves  = []
-var colors = ['red', 'green', 'blue', 'yellow'];
-var random_color = colors[Math.floor(Math.random() * colors.length)];
-document.getElementsByClassName('random_color').style.color = random_color;
+// var colors = ['red', 'green', 'blue', 'yellow'];
+// var random_color = colors[Math.floor(Math.random() * colors.length)];
+// document.getElementById('title').style.color = random_color;
 
 function buildGrid(){
   $("body").append("<ul class='grid'></ul>");
@@ -44,7 +44,7 @@ function drop(){
     var nextLi = $lis[nextIndex];
     
     // If next li is red, then stop and drop another
-    if ($(nextLi).hasClass("random_color")) {
+    if ($(nextLi).hasClass("color")) {
       // Add moves to an array of moves
       moves.push(prevIndex);
       checkForFullRow()
@@ -53,8 +53,8 @@ function drop(){
     }
 
     // Colour that li
-    if (prevLi) $(prevLi).removeClass("random_color");
-    $(nextLi).addClass("random_color")
+    if (prevLi) $(prevLi).removeClass("color");
+    $(nextLi).addClass("color")
 
     // Assign the previous and next indexes
     prevIndex = nextIndex;
@@ -70,7 +70,7 @@ function drop(){
       drop();
       return clearInterval(dropInterval)
     };
-  }, 100)
+  }, 50)
 
   document.addEventListener('keydown', function(move) {
     move.preventDefault();
