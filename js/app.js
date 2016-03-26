@@ -45,27 +45,29 @@ function drop(){
     nextIndex = nextIndex + width;
 
     // If it hits the bottom, then stop
+    var block = document.getElementsByClassName("color");
     if (nextIndex > total-1) {
       drop();
       return clearInterval(dropInterval)
     };
   }, 200)
 
-  document.addEventListener('keydown', function(move) {
+  document.addEventListener('keyup', function(move) {
+    move.preventDefault();
       //left
       if(move.keyCode == 37) {
         console.log("hello")
-          width -= 1;
+          nextIndex -=1;
       }
       //right
       else if(move.keyCode == 39) {
         console.log("hello")
-          width += 1;
+          nextIndex +=1;
       }
-      //bottom
-      else if(move.keyCode == 40) {
-        console.log("hello")
-          height += 1;
-      }
+     
+      // $(document).bind('keyup', function(){
+      //   $(move).stop();
+      //   console.log("smelly")
+      // })
   });
 }
