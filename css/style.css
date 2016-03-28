@@ -15,9 +15,25 @@
   list-style-type: none;
 }
 
-.color {
+
+.red {
+  background: red;
+}
+
+.blue {
   background: blue;
 }
+
+.green {
+  background: green;
+}
+
+.yellow {
+  background: yellow;
+}
+
+
+
 
 /*//john's tetris. match 5/10 blocks of same colour so that they dissapear.
 
